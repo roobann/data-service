@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ShopperRepository extends JpaRepository<Shopper, Long> {
     Shopper findByShopperId(String s);
+
+    void deleteByShopperId(String shopperId);
 }

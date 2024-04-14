@@ -12,12 +12,29 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShopperShelfId implements Serializable {
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "shopper_id")
     private Shopper shopper;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ShopperShelfId that = (ShopperShelfId) o;
+
+        if (!shopper.equals(that.shopper)) return false;
+        return product.equals(that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = shopper.hashCode();
+        result = 31 * result + product.hashCode();
+        return result;
+    }
 }

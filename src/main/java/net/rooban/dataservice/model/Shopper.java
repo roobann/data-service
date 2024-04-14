@@ -18,8 +18,8 @@ public class Shopper {
     @Column(name = "shopper_id")
     private String shopperId;
 
-    @OneToMany
-    @JoinColumn(name = "shopper_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "shopper_id", referencedColumnName = "shopper_id", updatable = false)
     private List<ShopperShelf> shopperShelves;
 
     public Shopper(String shopperId) {

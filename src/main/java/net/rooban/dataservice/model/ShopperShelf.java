@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "shopper_shelf")
@@ -28,6 +29,19 @@ public class ShopperShelf {
     public ShopperShelf(ShopperShelfId id, Double relevancyScore) {
         this.id = id;
         this.relevancyScore = relevancyScore;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShopperShelf that = (ShopperShelf) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
