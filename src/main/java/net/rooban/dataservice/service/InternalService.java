@@ -11,4 +11,6 @@ public interface InternalService {
     boolean loadData();
 
     void deleteShopperDetails(String shopperId);
+
+    void deleteProductDetails(String productId);
 }

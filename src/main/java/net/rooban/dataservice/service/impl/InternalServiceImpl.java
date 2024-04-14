@@ -71,6 +71,12 @@ public class InternalServiceImpl implements InternalService {
     }
 
     @Override
+    @Transactional
+    public void deleteProductDetails(String productId) {
+        productRepository.deleteByProductId(productId);
+    }
+
+    @Override
     public boolean loadData() {
         Boolean response = false;
         try {

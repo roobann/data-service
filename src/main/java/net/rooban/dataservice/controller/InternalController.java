@@ -37,4 +37,9 @@ public class InternalController {
     public void deleteShopper(@PathVariable String shopperId) {
         internalService.deleteShopperDetails(shopperId);
     }
+
+    @DeleteMapping("/product/{productId}")
+    public void deleteProduct(@PathVariable String productId) {
+        internalService.deleteProductDetails(productId);
+    }
 }
